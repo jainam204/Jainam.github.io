@@ -1,0 +1,50 @@
+[
+    {
+        "title": "Roos Park Restaurant Website",
+        "type": "Featured",
+        "tags": ["React", "Node.js", "AI", "Replit"],
+        "description": "Developed a full restaurant website using React & Node.js with AI-powered menu suggestions and smart ordering. Integrated online orders, table booking, WhatsApp chat, reviews, gallery, and admin panel."
+    },
+    {
+        "title": "Employee Management System",
+        "type": "Web",
+        "tags": ["Flask", "MySQL", "Pandas"],
+        "description": "A web system with login, CRUD operations, Excel/CSV import-export, and analytics dashboard using Flask and MySQL."
+    },
+    {
+        "title": "Android Auth App",
+        "type": "Mobile",
+        "tags": ["Jetpack Compose", "Firebase", "Material 3"],
+        "description": "Created a clean Material 3 Android app with splash screen, email/password login, Google login, and secure Firebase backend."
+    },
+    {
+        "title": "Phone Inventory System",
+        "type": "Web",
+        "tags": ["HTML", "JavaScript", "Flask API", "JWT"],
+        "description": "Built an inventory system with JWT authentication, product management, and real-time search."
+    },
+    {
+        "title": "AI Career Guidance App",
+        "type": "AI",
+        "tags": ["Streamlit", "LLaMA", "Python"],
+        "description": "An AI-based app that provides career advice in Gujarati and English using LLaMA integration."
+    },
+    {
+        "title": "Windows Forms CAD Automation",
+        "type": "Desktop",
+        "tags": ["C#", "SolidWorks API", ".NET", "SQLite"],
+        "description": "Automated CAD tasks with SolidWorks API, custom UserControls, and SQLite database handling."
+    },
+    {
+        "title": "Order Management System",
+        "type": "Web",
+        "tags": ["React", "Node.js"],
+        "description": "Full-stack React + Node system for industrial workflow"
+    },
+    {
+        "title": "AI Portfolio Assistant",
+        "type": "AI",
+        "tags": ["OpenAI", "Chatbot"],
+        "description": "Chatbot integrated portfolio using OpenAI"
+    }
+]
