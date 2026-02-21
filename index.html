@@ -1,35 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jainam Patel - Full-Stack Developer</title>
-    <meta name="description" content="Full-Stack Developer skilled in React, Node.js, Flask, Django, Android development, and AI integration.">
-    
+    <title>Jainam Patel — Full-Stack Developer</title>
+    <meta name="description"
+        content="Full-Stack Developer skilled in React, Node.js, Flask, Django, Android development, and AI integration. Based in Ahmedabad, India.">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- GSAP (Optional, keeping for potential animations) -->
-    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+    <!-- Scroll Progress -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scroll-progress"></div>
+    </div>
+
+    <!-- Particle Network Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Ambient Glow Blobs -->
+    <div class="ambient-bg" aria-hidden="true">
+        <div class="ambient-blob blob-1"></div>
+        <div class="ambient-blob blob-2"></div>
+        <div class="ambient-blob blob-3"></div>
+    </div>
+
+    <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
+    <!-- ═══════════ HEADER ═══════════ -->
     <header class="header">
         <div class="container header-container">
-            <a href="#" class="logo">JP<span class="dot">.</span></a>
-            
-            <nav class="nav-desktop">
+            <a href="#" class="logo">
+                <span class="logo-text">JP</span><span class="dot">.</span>
+            </a>
+
+            <nav class="nav-desktop" aria-label="Main navigation">
                 <ul class="nav-list">
                     <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
                     <li><a href="#skills" class="nav-link">Skills</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -38,8 +60,26 @@
 
             <div class="header-actions">
                 <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
-                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <!-- Sun icon -->
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                    <!-- Moon icon -->
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
                 </button>
                 <button id="menu-toggle" class="menu-btn" aria-label="Toggle Menu">
                     <span class="bar"></span>
@@ -49,9 +89,11 @@
         </div>
     </header>
 
-    <div class="mobile-menu">
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" aria-hidden="true">
         <nav>
             <a href="#about" class="mobile-link">About</a>
+            <a href="#experience" class="mobile-link">Experience</a>
             <a href="#skills" class="mobile-link">Skills</a>
             <a href="#projects" class="mobile-link">Projects</a>
             <a href="#contact" class="mobile-link">Contact</a>
@@ -59,78 +101,134 @@
     </div>
 
     <main>
+
+        <!-- ═══════════ HERO ═══════════ -->
         <section id="hero" class="hero">
             <div class="container hero-container">
                 <div class="hero-content">
+
                     <div class="badge-pill fade-in">
-                        <span class="status-dot"></span> Available for work
+                        <span class="status-dot"></span>
+                        Available for work
                     </div>
+
                     <h1 class="hero-title fade-in-up">
-                        Building digital <br>
-                        <span class="gradient-text">experiences</span> that matter.
+                        Building digital<br>
+                        <span class="gradient-text hacker-text" data-value="experiences.">experiences.</span>
                     </h1>
+
                     <p class="hero-subtitle fade-in-up delay-1">
-                        Hi, I'm <strong>Jainam Patel</strong>. A Full-Stack Developer, Android Developer, and AI Integration Specialist based in Ahmedabad, India.
+                        Hi, I'm <strong>Jainam Patel</strong> — a Full-Stack Developer,
+                        Android Developer, and AI Integration Specialist based in
+                        Ahmedabad, India.
                     </p>
+
                     <div class="hero-btns fade-in-up delay-2">
-                        <a href="#projects" class="btn btn-primary">View Work</a>
+                        <a href="#projects" class="btn btn-primary">
+                            View Work
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                                viewBox="0 0 24 24">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
                         <a href="#contact" class="btn btn-secondary">Contact Me</a>
                     </div>
+
                 </div>
+
+                <!-- Hero Visual — right side -->
                 <div class="hero-visual fade-in delay-3">
-                    <div class="abstract-shape shape-1"></div>
-                    <div class="abstract-shape shape-2"></div>
+                    <div class="orb orb-1"></div>
+                    <div class="orb orb-2"></div>
+                    <div class="orb orb-3"></div>
                     <div class="code-block">
-                        <pre><code><span class="keyword">const</span> <span class="variable">developer</span> = {
-  <span class="property">name</span>: <span class="string">"Jainam"</span>,
-  <span class="property">skills</span>: [<span class="string">"React"</span>, <span class="string">"Node"</span>, <span class="string">"AI"</span>],
-  <span class="property">hardWorker</span>: <span class="boolean">true</span>
-};</code></pre>
+                        <pre><code><span class="comment">// Jainam Patel — Developer</span>
+<span class="keyword">const</span> <span class="variable">developer</span> = {
+  <span class="property">name</span>:      <span class="string">"Jainam Patel"</span>,
+  <span class="property">location</span>:  <span class="string">"Ahmedabad, IN"</span>,
+  <span class="property">skills</span>:    [<span class="string">"React"</span>, <span class="string">"Node"</span>, <span class="string">"AI"</span>],
+  <span class="property">available</span>: <span class="boolean">true</span>,
+  <span class="property">projects</span>:  <span class="number">10</span><span class="string">+</span>,
+};
+
+<span class="keyword">export default</span> <span class="variable">developer</span>;</code></pre>
                     </div>
+                    <div class="tech-orbit">
+                        <div class="orbit-pill"><span class="pill-dot"></span>React</div>
+                        <div class="orbit-pill"><span class="pill-dot"></span>AI / LLM</div>
+                        <div class="orbit-pill"><span class="pill-dot"></span>Android</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator fade-in delay-3">
+                <div class="mouse">
+                    <div class="wheel"></div>
                 </div>
             </div>
         </section>
 
+        <!-- ═══════════ ABOUT ═══════════ -->
         <section id="about" class="section about">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">About Me</h2>
-                    <p class="section-desc">Who I am and what I do.</p>
+                <div class="section-header reveal">
+                    <span class="section-tag">About Me</span>
+                    <h2 class="section-title">Crafting great software,<br><span class="gradient-text">one line at a
+                            time.</span></h2>
+                    <p class="section-desc">Who I am and what I love building.</p>
                 </div>
-                
+
                 <div class="about-grid">
-                    <div class="about-content">
-                        <p>I am a versatile Full-Stack and Mobile App Developer with expertise in React, Node.js, Flask, Django, Android (Jetpack Compose), AI integration, and .NET development.</p>
-                        <p>With experience in fintech, education technology, automation tools, and restaurant websites, I deliver solutions that are both technically strong and user-friendly. I also have a background in graphic design and UI/UX.</p>
-                        
+                    <div class="about-content reveal">
+                        <p>I'm a versatile <strong>Full-Stack & Mobile App Developer</strong> with deep expertise in
+                            React, Node.js, Flask, Django, Android (Jetpack Compose), AI integration, and .NET
+                            development.</p>
+                        <p>With experience spanning fintech, education technology, automation tools, and restaurant
+                            platforms, I deliver solutions that are technically solid and delightful to use. I bring a
+                            strong UI/UX and graphic design background to everything I build.</p>
+                        <p>I believe the best software lives at the intersection of clean engineering and thoughtful
+                            design — and that's exactly the space I operate in.</p>
+
                         <div class="stats-grid">
-                            <div class="stat-item">
+                            <div class="stat-item reveal reveal-delay-1">
                                 <span class="stat-number">10+</span>
                                 <span class="stat-label">Projects Completed</span>
                             </div>
-                            <div class="stat-item">
+                            <div class="stat-item reveal reveal-delay-2">
                                 <span class="stat-number">3+</span>
                                 <span class="stat-label">Years Coding</span>
                             </div>
+                            <div class="stat-item reveal reveal-delay-3">
+                                <span class="stat-number">5+</span>
+                                <span class="stat-label">Tech Domains</span>
+                            </div>
+                            <div class="stat-item reveal reveal-delay-4">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Passion</span>
+                            </div>
                         </div>
                     </div>
+
                     <div class="about-cards">
-                        <div class="feature-card">
+                        <div class="feature-card reveal reveal-delay-1">
                             <div class="icon-box">💻</div>
                             <h3>Full-Stack</h3>
                             <p>React, Node.js, Flask, Django</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card reveal reveal-delay-2">
                             <div class="icon-box">📱</div>
                             <h3>Mobile</h3>
                             <p>Jetpack Compose, Firebase</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card reveal reveal-delay-3">
                             <div class="icon-box">🤖</div>
                             <h3>AI Integration</h3>
-                            <p>LLaMA Models, Streamlit</p>
+                            <p>LLaMA, OpenAI API, Streamlit</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card reveal reveal-delay-4">
                             <div class="icon-box">⚙️</div>
                             <h3>Backend</h3>
                             <p>REST APIs, MySQL, SQLite</p>
@@ -140,28 +238,97 @@
             </div>
         </section>
 
+        <!-- ═══════════ EXPERIENCE / JOURNEY ═══════════ -->
+        <section id="experience" class="section experience">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Experience</span>
+                    <h2 class="section-title">My Journey.</h2>
+                    <p class="section-desc">A timeline of my professional experience and projects.</p>
+                </div>
+
+                <div class="timeline">
+                    <!-- Timeline Item -->
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2023 - Present</span>
+                            <h3>Full-Stack &amp; AI Developer</h3>
+                            <span class="timeline-company">Independent Contracting</span>
+                            <p>Developing robust, scalable solutions across various sectors including Fintech, EdTech,
+                                and Restaurant platforms. Deeply involved in integrating open-source LLMs and AI
+                                automation tools into web and mobile experiences.</p>
+                            <div class="timeline-tags">
+                                <span>React</span>
+                                <span>Node.js</span>
+                                <span>LLaMA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item -->
+                    <div class="timeline-item reveal reveal-delay-1">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2021 - 2023</span>
+                            <h3>Mobile App Developer</h3>
+                            <span class="timeline-company">Tech Projects</span>
+                            <p>Architected native Android applications leveraging modern Jetpack Compose UI. Focused on
+                                creating highly responsive, intuitive user interfaces backed by seamless API integration
+                                and local databases.</p>
+                            <div class="timeline-tags">
+                                <span>Android</span>
+                                <span>Jetpack Compose</span>
+                                <span>SQLite</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item -->
+                    <div class="timeline-item reveal reveal-delay-2">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2020 - 2021</span>
+                            <h3>Automation Developer</h3>
+                            <span class="timeline-company">Industrial Solutions</span>
+                            <p>Engineered workflow automation tools to bridge mechanical design and software. Created
+                                plugins and API integrations using C# .NET to drastically reduce manual data entry.</p>
+                            <div class="timeline-tags">
+                                <span>C#</span>
+                                <span>.NET</span>
+                                <span>SolidWorks API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ SKILLS ═══════════ -->
         <section id="skills" class="section skills">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Tech Stack</h2>
-                    <p class="section-desc">The tools I use to build.</p>
+                <div class="section-header reveal">
+                    <span class="section-tag">Tech Stack</span>
+                    <h2 class="section-title">The tools I build with.</h2>
+                    <p class="section-desc">A curated set of technologies I use to craft great products.</p>
                 </div>
 
                 <div class="bento-grid">
-                    <div class="bento-item large">
-                        <h3>Frontend & Mobile</h3>
+                    <div class="bento-item large reveal">
+                        <h3>Frontend &amp; Mobile</h3>
                         <div class="tag-cloud">
                             <span>React</span>
                             <span>HTML5</span>
                             <span>CSS3</span>
-                            <span>Tailwind</span>
+                            <span>Tailwind CSS</span>
                             <span>JavaScript</span>
                             <span>Jetpack Compose</span>
                             <span>Material 3</span>
+                            <span>GSAP</span>
                         </div>
                     </div>
-                    <div class="bento-item medium">
-                        <h3>Backend & DB</h3>
+                    <div class="bento-item medium reveal reveal-delay-1">
+                        <h3>Backend &amp; Database</h3>
                         <div class="tag-cloud">
                             <span>Node.js</span>
                             <span>Express</span>
@@ -172,8 +339,8 @@
                             <span>Firebase</span>
                         </div>
                     </div>
-                    <div class="bento-item medium">
-                        <h3>AI & Data</h3>
+                    <div class="bento-item medium reveal reveal-delay-2">
+                        <h3>AI &amp; Data</h3>
                         <div class="tag-cloud">
                             <span>Python</span>
                             <span>Pandas</span>
@@ -182,8 +349,8 @@
                             <span>OpenAI API</span>
                         </div>
                     </div>
-                    <div class="bento-item small">
-                        <h3>Tools</h3>
+                    <div class="bento-item small reveal reveal-delay-1">
+                        <h3>Dev Tools</h3>
                         <div class="tag-cloud">
                             <span>Git</span>
                             <span>GitHub</span>
@@ -192,7 +359,7 @@
                             <span>VS Code</span>
                         </div>
                     </div>
-                    <div class="bento-item small">
+                    <div class="bento-item small reveal reveal-delay-2">
                         <h3>Other</h3>
                         <div class="tag-cloud">
                             <span>C#</span>
@@ -204,72 +371,70 @@
             </div>
         </section>
 
+        <!-- ═══════════ PROJECTS ═══════════ -->
         <section id="projects" class="section projects">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Selected Works</h2>
-                    <p class="section-desc">Things I've built recently.</p>
+                <div class="section-header reveal">
+                    <span class="section-tag">Selected Works</span>
+                    <h2 class="section-title">Things I've built.</h2>
+                    <p class="section-desc">A selection of projects across web, mobile, and AI.</p>
                 </div>
 
                 <div class="projects-grid" id="projects-container">
-                    <!-- Projects will be loaded here via JS -->
-                    <!-- Fallback static content for SEO/No-JS -->
-                    <article class="project-card featured">
-                        <div class="card-content">
-                            <div class="card-header">
-                                <span class="badge">Featured</span>
-                                <h3>Roos Park Restaurant Website</h3>
-                            </div>
-                            <p>Full restaurant website using React & Node.js with AI-powered menu suggestions and smart ordering.</p>
-                            <div class="card-tags">
-                                <span>React</span>
-                                <span>Node.js</span>
-                                <span>AI</span>
-                            </div>
-                        </div>
-                    </article>
+                    <!-- Cards loaded dynamically via script.js -->
                 </div>
             </div>
         </section>
 
+        <!-- ═══════════ CONTACT ═══════════ -->
         <section id="contact" class="section contact">
             <div class="container">
-                <div class="contact-wrapper">
+                <div class="contact-wrapper reveal">
                     <div class="contact-info">
-                        <h2>Let's work together</h2>
-                        <p>Have a project in mind? I'd love to hear about it.</p>
-                        
+                        <h2>Let's <span class="gradient-text">work together</span></h2>
+                        <p>Have a project in mind? I'd love to hear about it. Let's build something great.</p>
+
                         <div class="contact-links">
-                            <a href="mailto:jainamp133@gamil.com" class="contact-link">
-                                <span class="icon">✉️</span> jainamp133@gamil.com
+                            <a href="mailto:jainamp133@gmail.com" class="contact-link">
+                                <span class="icon">✉️</span> jainamp133@gmail.com
                             </a>
                             <a href="tel:+916351617439" class="contact-link">
                                 <span class="icon">📞</span> +91 6351617439
                             </a>
                             <div class="contact-link">
-                                <span class="icon">📍</span> Ahmedabad, Gujarat
+                                <span class="icon">📍</span> Ahmedabad, Gujarat, India
                             </div>
                         </div>
 
                         <div class="social-links">
-                            <a href="https://github.com/jainam204" target="_blank" aria-label="GitHub">GitHub</a>
-                            <a href="https://www.linkedin.com/in/jainam-patel-77792a386/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                            <a href="https://github.com/jainam204" target="_blank" rel="noopener noreferrer">
+                                GitHub ↗
+                            </a>
+                            <a href="https://www.linkedin.com/in/jainam-patel-77792a386/" target="_blank"
+                                rel="noopener noreferrer">
+                                LinkedIn ↗
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
+    <!-- ═══════════ FOOTER ═══════════ -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <div class="footer-logo">JP<span class="dot">.</span></div>
+                <div class="footer-divider"></div>
                 <p>&copy; 2025 Jainam Patel. All rights reserved.</p>
-                <p class="footer-tagline">Built with ❤️ and Code.</p>
+                <p class="footer-tagline">Designed &amp; Built with ❤️</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>

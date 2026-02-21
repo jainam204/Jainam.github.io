@@ -1,74 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* ============================================================
+   JAINAM PATEL — style.css
+   Premium Project Cards — Spotlight Glow + 3D Tilt
+   ============================================================ */
 
-:root {
-    --bg-color: #0a0a0a;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --card-border: rgba(255, 255, 255, 0.1);
-    --text-primary: #ffffff;
-    --text-secondary: #a1a1aa;
-    --accent-color: #3b82f6;
-    --accent-glow: rgba(59, 130, 246, 0.5);
-    --badge-bg: rgba(59, 130, 246, 0.1);
-    --badge-text: #60a5fa;
-    --font-main: 'Inter', sans-serif;
-}
-
-[data-theme="light"] {
-    --bg-color: #f4f4f5;
-    --card-bg: #ffffff;
-    --card-border: #e4e4e7;
-    --text-primary: #18181b;
-    --text-secondary: #52525b;
-    --accent-color: #2563eb;
-    --accent-glow: rgba(37, 99, 235, 0.3);
-    --badge-bg: #eff6ff;
-    --badge-text: #2563eb;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    font-family: var(--font-main);
-    line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    overflow-x: hidden;
-}
-
-/* --- Layout & Container --- */
-#projects-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 24px;
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* --- Project Card (Spotlight Effect) --- */
+/* ─── Project Card Base ──────────────────────────────────── */
 .project-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
+    background: var(--glass);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
     display: flex;
     flex-direction: column;
+    cursor: default;
     height: 100%;
+    backdrop-filter: blur(12px);
+    will-change: transform;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    transform: translateY(-8px);
+    border-color: rgba(59, 130, 246, 0.35);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(59, 130, 246, 0.15);
 }
 
-/* The Spotlight Glow */
+/* ── Spotlight glow on hover ── */
 .project-card::before {
     content: "";
     position: absolute;
@@ -76,27 +35,47 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
-            rgba(255, 255, 255, 0.06),
-            transparent 40%);
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(59, 130, 246, 0.10),
+            transparent 50%);
     opacity: 0;
     transition: opacity 0.5s ease;
     pointer-events: none;
     z-index: 1;
+    border-radius: inherit;
 }
 
 .project-card:hover::before {
     opacity: 1;
 }
 
-/* Inner Border Glow */
+/* ── Animated top-border gradient ── */
+.project-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--ease);
+    z-index: 5;
+}
+
+.project-card:hover::after {
+    transform: scaleX(1);
+}
+
+/* ── Inner border glow (spotlight ring) ── */
 .card-border {
     position: absolute;
     inset: 0;
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     padding: 1px;
-    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
-            var(--accent-glow),
+    background: radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(59, 130, 246, 0.5),
             transparent 40%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -111,8 +90,31 @@ body {
     opacity: 1;
 }
 
+/* ── Card Icon (type badge at top) ── */
+.card-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    z-index: 3;
+    transition: transform 0.3s var(--bounce);
+}
+
+.project-card:hover .card-icon {
+    transform: rotate(-8deg) scale(1.1);
+}
+
+/* ── Card Content ── */
 .card-content {
-    padding: 24px;
+    padding: 28px 24px 24px;
     position: relative;
     z-index: 3;
     display: flex;
@@ -120,69 +122,139 @@ body {
     flex-grow: 1;
 }
 
-/* --- Typography & Elements --- */
+/* ── Card Header ── */
 .card-header {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 12px;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
 }
 
 .card-header h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
     color: var(--text-primary);
-    margin-right: 10px;
+    line-height: 1.3;
+    transition: color 0.25s;
 }
 
+.project-card:hover .card-header h3 {
+    color: #ffffff;
+}
+
+/* ── Badges ── */
+.badge {
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    color: white;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+    white-space: nowrap;
+}
+
+.badge-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.badge-type::before {
+    content: '';
+    width: 16px;
+    height: 1px;
+    background: var(--text-muted);
+}
+
+/* ── Description ── */
 .project-card p {
     color: var(--text-secondary);
-    font-size: 0.95rem;
-    margin-bottom: 20px;
+    font-size: 0.9rem;
+    line-height: 1.75;
+    margin-bottom: 22px;
     flex-grow: 1;
 }
 
-/* --- Badges & Tags --- */
-.badge {
-    background-color: var(--accent-color);
-    color: white;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 999px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 0 10px var(--accent-glow);
-}
-
-.card-tags {
+/* ── Card Footer (tags + link) ── */
+.card-footer {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
     margin-top: auto;
 }
 
+/* ── Tags ── */
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
 .card-tags span {
-    font-size: 0.8rem;
-    padding: 4px 12px;
-    border-radius: 6px;
-    background-color: var(--badge-bg);
-    color: var(--badge-text);
-    border: 1px solid rgba(59, 130, 246, 0.1);
-    transition: all 0.2s ease;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 50px;
+    background: rgba(59, 130, 246, 0.08);
+    color: var(--neon-blue);
+    border: 1px solid rgba(59, 130, 246, 0.15);
+    transition: all 0.25s var(--ease);
 }
 
 .project-card:hover .card-tags span {
-    background-color: var(--accent-color);
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.35);
+}
+
+/* ── Arrow Button ── */
+.card-arrow {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s var(--bounce);
+    color: var(--text-muted);
+}
+
+.project-card:hover .card-arrow {
+    background: var(--neon-blue);
+    border-color: var(--neon-blue);
     color: white;
+    transform: rotate(-45deg);
+    box-shadow: 0 4px 12px var(--glow-blue);
 }
 
-/* --- Animations --- */
+/* ─── Featured Card Variant ──────────────────────────────── */
+.project-card.featured {
+    border-color: rgba(59, 130, 246, 0.2);
+    background: linear-gradient(145deg,
+            rgba(59, 130, 246, 0.06) 0%,
+            rgba(139, 92, 246, 0.04) 100%);
+}
+
+/* ─── Animations ─────────────────────────────────────────── */
 .fade-in-up {
-    animation: fadeInUp 0.6s ease-out forwards;
+    animation: cardFadeUp 0.6s var(--ease) forwards;
 }
 
-@keyframes fadeInUp {
+@keyframes cardFadeUp {
     from {
         opacity: 0;
         transform: translateY(30px);
@@ -194,40 +266,21 @@ body {
     }
 }
 
-/* --- Custom Cursor --- */
-.cursor-dot,
-.cursor-outline {
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    z-index: 9999;
-    pointer-events: none;
-}
-
-.cursor-dot {
-    width: 8px;
-    height: 8px;
-    background-color: var(--accent-color);
-}
-
-.cursor-outline {
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--accent-color);
-    opacity: 0.5;
-}
-
-/* --- Mobile Responsiveness --- */
+/* ─── Mobile ─────────────────────────────────────────────── */
 @media (max-width: 768px) {
-    #projects-container {
-        grid-template-columns: 1fr;
-        padding: 20px;
+    .card-content {
+        padding: 22px 18px 18px;
     }
 
-    .cursor-dot,
-    .cursor-outline {
+    .card-header h3 {
+        font-size: 1rem;
+    }
+
+    .project-card p {
+        font-size: 0.85rem;
+    }
+
+    .tech-orbit {
         display: none;
     }
 }
