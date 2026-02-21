@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- Theme Toggle ---
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
-    
+
     // Check for saved theme preference
     const savedTheme = localStorage.getItem('theme') || 'dark';
     html.setAttribute('data-theme', savedTheme);
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     themeToggle.addEventListener('click', () => {
         const currentTheme = html.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
+
         html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
     });
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menuToggle.addEventListener('click', () => {
         mobileMenu.classList.toggle('open');
         menuToggle.classList.toggle('active');
-        
+
         // Animate hamburger to X
         const bars = menuToggle.querySelectorAll('.bar');
         if (mobileMenu.classList.contains('open')) {
@@ -53,9 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch('projects.json');
             if (!response.ok) throw new Error('Failed to load projects');
-            
+
             const projects = await response.json();
-            
+
             // Clear loading/fallback content if fetch successful
             if (projects.length > 0) {
                 projectsContainer.innerHTML = '';
@@ -64,12 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
             projects.forEach(project => {
                 const card = document.createElement('article');
                 card.className = 'project-card';
-                
+
                 // Determine tags based on description or type if not explicit
                 // Use project.tags if available, otherwise fallback to type
                 const tags = project.tags || (project.type ? [project.type] : ['Web']);
-                
+
                 card.innerHTML = `
+                    <div class="card-border"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <h3>${project.title}</h3>
@@ -81,7 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 `;
-                
+
+                // Add Spotlight Effect
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+
                 projectsContainer.appendChild(card);
             });
         } catch (error) {
@@ -124,16 +134,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const posX = e.clientX;
             const posY = e.clientY;
 
-            // cursorDot.style.left = `${posX}px`;
-            // cursorDot.style.top = `${posY}px`;
+            if (cursorDot) {
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+            }
 
-            // cursorOutline.style.left = `${posX}px`;
-            // cursorOutline.style.top = `${posY}px`;
-            
-            // cursorOutline.animate({
-            //     left: `${posX}px`,
-            //     top: `${posY}px`
-            // }, { duration: 500, fill: "forwards" });
+            if (cursorOutline) {
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 500, fill: "forwards" });
+            }
         });
     }
 });

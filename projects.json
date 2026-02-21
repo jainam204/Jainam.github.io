@@ -2,49 +2,82 @@
     {
         "title": "Roos Park Restaurant Website",
         "type": "Featured",
-        "tags": ["React", "Node.js", "AI", "Replit"],
-        "description": "Developed a full restaurant website using React & Node.js with AI-powered menu suggestions and smart ordering. Integrated online orders, table booking, WhatsApp chat, reviews, gallery, and admin panel."
+        "tags": [
+            "React",
+            "Node.js",
+            "AI",
+            "Replit"
+        ],
+        "description": "Full-stack restaurant platform featuring AI-driven menu suggestions and smart ordering. Includes real-time table booking, WhatsApp integration, and a comprehensive admin dashboard."
     },
     {
         "title": "Employee Management System",
         "type": "Web",
-        "tags": ["Flask", "MySQL", "Pandas"],
-        "description": "A web system with login, CRUD operations, Excel/CSV import-export, and analytics dashboard using Flask and MySQL."
+        "tags": [
+            "Flask",
+            "MySQL",
+            "Pandas"
+        ],
+        "description": "Comprehensive workforce management system featuring secure authentication, bulk data processing (Excel/CSV), and an interactive analytics dashboard."
     },
     {
         "title": "Android Auth App",
         "type": "Mobile",
-        "tags": ["Jetpack Compose", "Firebase", "Material 3"],
-        "description": "Created a clean Material 3 Android app with splash screen, email/password login, Google login, and secure Firebase backend."
+        "tags": [
+            "Jetpack Compose",
+            "Firebase",
+            "Material 3"
+        ],
+        "description": "Modern Material 3 Android application implementing secure authentication flows, including Google Sign-In and Firebase backend integration."
     },
     {
         "title": "Phone Inventory System",
         "type": "Web",
-        "tags": ["HTML", "JavaScript", "Flask API", "JWT"],
-        "description": "Built an inventory system with JWT authentication, product management, and real-time search."
+        "tags": [
+            "HTML",
+            "JavaScript",
+            "Flask API",
+            "JWT"
+        ],
+        "description": "Real-time inventory tracking system with secure JWT authentication, dynamic product management, and instant search capabilities."
     },
     {
         "title": "AI Career Guidance App",
         "type": "AI",
-        "tags": ["Streamlit", "LLaMA", "Python"],
-        "description": "An AI-based app that provides career advice in Gujarati and English using LLaMA integration."
+        "tags": [
+            "Streamlit",
+            "LLaMA",
+            "Python"
+        ],
+        "description": "Bilingual AI career counselor powered by LLaMA, providing personalized professional guidance in Gujarati and English."
     },
     {
         "title": "Windows Forms CAD Automation",
         "type": "Desktop",
-        "tags": ["C#", "SolidWorks API", ".NET", "SQLite"],
-        "description": "Automated CAD tasks with SolidWorks API, custom UserControls, and SQLite database handling."
+        "tags": [
+            "C#",
+            "SolidWorks API",
+            ".NET",
+            "SQLite"
+        ],
+        "description": "Desktop automation tool for SolidWorks, streamlining CAD workflows with custom UserControls and local SQLite data management."
     },
     {
         "title": "Order Management System",
         "type": "Web",
-        "tags": ["React", "Node.js"],
-        "description": "Full-stack React + Node system for industrial workflow"
+        "tags": [
+            "React",
+            "Node.js"
+        ],
+        "description": "Scalable industrial workflow system designed to optimize order processing and tracking using a React and Node.js architecture."
     },
     {
         "title": "AI Portfolio Assistant",
         "type": "AI",
-        "tags": ["OpenAI", "Chatbot"],
-        "description": "Chatbot integrated portfolio using OpenAI"
+        "tags": [
+            "OpenAI",
+            "Chatbot"
+        ],
+        "description": "Interactive portfolio assistant powered by OpenAI, allowing visitors to converse with a virtual representation of my professional profile."
     }
 ]
